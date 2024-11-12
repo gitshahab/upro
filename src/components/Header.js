@@ -10,22 +10,25 @@ export const Header = () => {
 
   return (
     <div className='p-3 flex justify-between items-center bg-white'>
-      <a href="/" className='flex gap-2 item-center'>
+      <a href="/" className='flex gap-2 item-center flex-1'>
         <img src={Logo} className='h-6 rounded-lg' alt="logo" />
         <span className='text-lg font-medium font-head'>Upro</span>
       </a>
       <div className='hidden md:flex justify-between gap-12'>
-        <a href="/" className='font-medium hover:font-semibold hover:text-blue-700'>Pricing</a>
-        <a href="/" className='font-medium hover:font-semibold hover:text-blue-700'>Changelog</a>
-        <a href="/" className='font-medium hover:font-semibold hover:text-blue-700'>Docs</a>
-        <a href="/" className='font-medium hover:font-semibold hover:text-blue-700'>Blogs</a>
-        <a href="/" className='font-medium hover:font-semibold hover:text-blue-700'>Login</a>
+        <a href="/" className='font-medium hover:text-blue-700'>Pricing</a>
+        <a href="/" className='font-medium hover:text-blue-700'>Changelog</a>
+        <a href="/" className='font-medium hover:text-blue-700'>Docs</a>
+        <a href="/" className='font-medium hover:text-blue-700'>Blogs</a>
+        <a href="/" className='font-medium hover:text-blue-700'>Login</a>
       </div>
-      <button className='hidden md:flex gap-2 items-center border rounded-lg border-gray-400 hover:border-gray-600 px-2s'>
-        <img src={ElectronImg} alt="electron" />
-        <span>Electron Developers</span>
-        <ArrowForward/>
-      </button>
+      <div className='hidden md:flex flex-1 justify-end'>
+        <button className='hidden md:flex gap-2 items-center border rounded-lg border-gray-400 hover:border-gray-600 px-2'>
+          <img src={ElectronImg} alt="electron" />
+          <span>Electron Developers</span>
+          <ArrowForward/>
+        </button>
+      </div>
+  
       <button onClick={() => setMenu(!menu)} className='md:hidden'>
         <MenuIcon />
       </button>

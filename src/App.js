@@ -1,9 +1,12 @@
-import { Header } from "./components/Header";
-
+import { Header, Footer } from "./components";
+import { Home } from "./Home";
+ 
 function App() {
   return (
-    <div className="App">
+    <div className="overflow-x-hidden">
       <Header/>
+      <Home/>
+      <Footer/>
     </div>
   );
 }
