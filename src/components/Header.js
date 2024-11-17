@@ -9,7 +9,7 @@ export const Header = () => {
   const [ menu, setMenu ] = useState(false);
 
   return (
-    <div className='p-3 flex justify-between items-center bg-white'>
+      <div className="p-3 flex justify-between items-center bg-white sticky top-0 z-50 shadow-md">
       <a href="/" className='flex gap-2 item-center flex-1'>
         <img src={Logo} className='h-6 rounded-lg' alt="logo" />
         <span className='text-lg font-medium font-head'>Upro</span>

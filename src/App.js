@@ -3,7 +3,7 @@ import { Home } from "./Home";
  
 function App() {
   return (
-    <div className="overflow-x-hidden">
+    <div>
       <Header/>
       <Home/>
       <Footer/>

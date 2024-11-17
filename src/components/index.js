@@ -6,3 +6,5 @@ export { PoweredApps } from "./PoweredApps";
 export { Bentogrid } from "./Bentogrid";
 export { FeatureLine } from "./FeatureLine";
 export { Testimonial } from "./Testimonial";
+export { Pricing } from "./Pricing";
+export { Faq } from "./Faq";

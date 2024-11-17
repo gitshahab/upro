@@ -64,7 +64,7 @@ export const PoweredApps = () => {
     }, [setupIntersection]);
 
   return (
-    <div className='flex flex-col gap-8'>
+    <div className='flex flex-col gap-8 overflow-x-hidden'>
         <div className='flex justify-center gap-2'>
             <img className='translate-y-2' src={ArrowDown} alt="downArrow" />
             <span className='font-semibold'>APPS POWERED BY UPRO</span>
