@@ -1,4 +1,5 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
+import { useScroll } from './hooks/useScroll';
 import ArrowDown from "../assets/asset 2.svg";
 import Asset3 from "../assets/asset 3.png";
 import Asset4 from "../assets/asset 4.png";
@@ -23,45 +24,25 @@ import Asset22 from "../assets/asset 22.png";
 import Asset23 from "../assets/asset 23.png";
 import Asset24 from "../assets/asset 24.png";
 
+
 export const PoweredApps = () => {
-    const divRefs = useRef([]);
-    
-    const initialLTR = -48*4;
-    const initialRTL = 36*4;
-
-    const scrollHandler = useCallback((element, isLTR, speed) => {
-        const elementTop = element.getBoundingClientRect().top;
-
-        if ( elementTop < window.innerHeight) {
-            const translateX = (window.innerHeight - elementTop) * speed;
-            let totalTranslate = isLTR ? translateX + initialLTR : -(translateX + initialRTL);
-            element.style.transform = `translateX(${totalTranslate}px)`;
-        }
-    }, [initialLTR, initialRTL]);
-
-    const setupIntersection = useCallback((element, isLTR, speed) => {
-        const handleScroll = () => scrollHandler(element, isLTR, speed);
-        const intersectionCallback = (entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    document.addEventListener("scroll", handleScroll);
-                }else {
-                    document.removeEventListener("scroll", handleScroll);
-                }
-            });
-        }
-        const intersectionObserver = new IntersectionObserver(intersectionCallback);
-        intersectionObserver.observe(element);
-    }, [scrollHandler]);
-
-    
+    const { divRefs, setupIntersection } = useScroll(-48 * 4, 36 * 4, 0.15);
 
     useEffect(() => {
+        const cleanupFns = []
         divRefs.current.forEach((div, index) => {
-            const isLTR = index % 2 === 0;
-            setupIntersection(div, isLTR, 0.15);
-        })
-    }, [setupIntersection]);
+            if (div) {
+                const isLTR = index % 2 === 0;
+                const cleanup = setupIntersection(div, isLTR);
+                cleanupFns.push(cleanup);
+            }
+        });
+
+        return () => {
+            cleanupFns.forEach((cleanup) => cleanup && cleanup());
+        };
+
+    }, [divRefs, setupIntersection]);
 
   return (
     <div className='flex flex-col gap-8 overflow-x-hidden'>
